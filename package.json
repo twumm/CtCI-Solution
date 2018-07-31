@@ -1,0 +1,19 @@
+{
+  "name": "ctci-my-solutions",
+  "version": "1.0.0",
+  "description": "Contains solutions to questions in Cracking the Coding Interview.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "twumm",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.0.15",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.0.15",
+    "chai": "^3.4.0",
+    "eslint": "^1.8.0",
+    "mocha": "^2.3.3",
+    "mocha-eslint": "^1.0.0"
+  }
+}

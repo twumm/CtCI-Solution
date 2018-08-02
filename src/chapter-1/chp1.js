@@ -152,8 +152,22 @@ exports.oneAway = (str1, str2) => {
 // repeat process on next char
 
 exports.compressString = (str) => {
+  // Always test for errors in user input
+  if (!str) {
+    return `${str} - must be a string.`
+  }
+
+  let compressedString = ''
   let strCount = 0
   for (let i = 0; i < str.length; i++) {
+    let char = str[i], start = i
     
+    while (i + 1 < str.length && char === str[i + 1]) {
+      i++
+    }
+
+    compressedString += char + (i - start + 1)
   }
+
+  return compressedString.length < str.length ? compressedString : str
 }

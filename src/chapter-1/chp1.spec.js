@@ -35,6 +35,33 @@ describe('chapter1-q1: hasUniqueCharacters', function() {
 })
 
 
+// Test if one string is a permutation of the other.
+describe('chapter1-q2: isPermutation', function() {
+  
+  // Test cases which pass.
+  [
+    ['madeit', 'itadme'],
+    ['alcatel', 'telcaal'],
+    ['02o', 'o02'],
+    ['maze', 'zeam']
+  ].forEach(arg => {
+
+    it(`returns true for strings that are permutations: ${arg[0]} & ${arg[1]}`, function() {
+      expect(chp1.isPermutation(arg[0], arg[1])).to.be.true
+    })
+  });
+
+  // Test cases which fail.
+  [
+    ['madeit', 'meanit'],
+    ['whatelse', 'yourface']
+  ].forEach(arg => {
+
+    it(`returns false for strings that not permutations: ${arg[0]} & ${arg[1]}`, function() {
+      expect(chp1.isPermutation(arg[0], arg[1])).to.be.false
+    })
+  })
+})
 
 
 /* Easy tests

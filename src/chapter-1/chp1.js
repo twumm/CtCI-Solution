@@ -53,10 +53,14 @@ exports.isPermutation = (str1, str2) => {
  */
 
 
-exports.replaceSpace = (str, length) => {
+exports.replaceSpace = (str) => {
+  if (!str || str.length === 0) {
+    return str
+  }
+
   let URLify = ''
   // Loop through the string and add %20 wherever there is space.
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < str.length; i++) {
     if (str[i] === ' ') {
       URLify += '%20'
     }

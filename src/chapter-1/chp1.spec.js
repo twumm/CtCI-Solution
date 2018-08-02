@@ -64,6 +64,37 @@ describe('chapter1-q2: isPermutation', function() {
 })
 
 
+// Test if spaces in a string have been replaced.
+describe('chapter1-q3: replaceSpace', function() {
+
+  // Test cases which pass
+  it('works with null/undefined as input', function() {
+    expect(chp1.replaceSpace(undefined)).to.be.undefined
+    expect(chp1.replaceSpace(null)).to.be.null
+  });
+
+  it('works with an empty array as input', function() {
+    expect(chp1.replaceSpace([])).to.eql([]);
+  });
+
+  // Test cases to pass
+  [
+    'none',
+    ' ',
+    '    ',
+    ' someGuy',
+    ' hereAndThere ',
+    'http://www.google.com/search?q=something lots to learn'
+  ].forEach(arg => {
+
+    it(`returns true for unique string: ${arg}`, function() {
+      let expected = arg.replace(/ /g, '%20')
+      expect(chp1.replaceSpace(arg)).to.eql(expected)
+    })
+  })
+})
+
+
 /* Easy tests
 console.log(chp1.replaceSpace("Mt John Smith    ", 13))
 console.log(chp1.oneAway('pale', 'ple'))

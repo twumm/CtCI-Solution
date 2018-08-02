@@ -20,7 +20,11 @@ exports.hasUniqueCharacters = (str) => {
 /**
  * Question 2
  * Check Permutation: Given two strings, write a method to decide if
- * one is a permutation of the other.
+ * one is a permutation of the other - even if one string is mixed.
+ * 
+ * EXAMPLE
+ * Input:   ['abcdefghi', 'ihgfedcba']
+ * Output:  true
  */
 
 exports.isPermutation = (str1, str2) => {

@@ -171,3 +171,111 @@ exports.compressString = (str) => {
 
   return compressedString.length < str.length ? compressedString : str
 }
+
+
+/**
+ * Question 7
+ * Rotate Matrix: Given an image represented by an NxN matrix, where
+ * each pixel in the image is 4 bytes, write a method to rotate the image
+ * by 90 degrees. Can you do this in place?
+ */
+
+exports.rotateMatrix = matrix => {
+  if (!matrix || matrix.length === 0 || matrix.length !== matrix[0].length) {
+    throw new Error('invalid matrix')
+  }
+  if (matrix.length < 2) {
+    return matrix // Can't rotate a 1,1 matrix.
+  }
+
+  let len = matrix.length - 1,
+    halfMatrix = Math.floor(matrix.length / 2)
+  // Loop through the matrix diagonally.
+  for (let start = 0; start < halfMatrix; start++) {
+
+    // Loop through the x axis.
+    for (let i = 0; i < len - (start * 2); i++) {
+      let y = start,
+          x = start + i,
+          prev = matrix[y][x]
+
+      // Loop through all 4 corners.
+      for (let j = 0; j < 4; j++) {
+        let nextY = x,
+          nextX = len - y,
+          next = matrix[nextY][nextX]
+        matrix[nextY][nextX] = prev
+        prev = next
+        x = nextX
+        y = nextY
+      }
+    }
+  }
+
+  return matrix
+}
+
+
+
+/**
+ * Question 8
+ * Zero Matrix: Write an algorithm such that if an element in an MxN
+ * matrix is 0, its entire row and column are set to 0.
+ */
+exports.zeroMatrix = matrix => {
+  if (!matrix) {
+    throw new Error('invalid matrix')
+  }
+  if (matrix.length === 0) {
+    return matrix
+  }
+
+  let rows = new Array(matrix.length),
+    columns = new Array(matrix[0].length)
+
+  rows.fill(false)
+  columns.fill(false)
+
+  for (let y = 0; y < rows.length; y++) {
+    for (let x = 0; x < columns.length; x++) {
+      if (matrix[y][x] === 0) {
+        rows[y] = true
+        columns[x] = true
+      }
+    }
+  }
+
+  for (let y = 0; y < rows.length; y++) {
+    for (let x = 0; x < columns.length; x++) {
+      if (rows[y] || columns[x]) {
+        matrix[y][x] = 0
+      }
+    }
+  }
+
+  return matrix
+}
+
+/**
+ * Question 9
+ * String Rotation: Assume you have a method isSubstring which checks
+ * if one word is a substring of another. Given two strings, s1 and s2,
+ * write code to check if s2 is a rotation of s1 using only one call
+ * to isSubstring (e.g: "waterbottle" is a rotation of "erbottlewat").
+ */
+
+// Define isSubstring method.
+let isSubstring = (str, substr) => {
+  return str.includes(substr)
+}
+
+exports.isRotatedSubstring = (str1, str2) => {
+  if (!str1 || !str2) {
+    throw new Error('invalid input')
+  }
+  if (str1.length !== str2.length) {
+    return false
+  }
+
+  return isSubstring(str1 + str1, str2)
+}
